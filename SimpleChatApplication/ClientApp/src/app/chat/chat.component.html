@@ -1,0 +1,78 @@
+<div class="container">
+  <h3 class="text-center mt-3">Czat</h3>
+  <hr>
+  <div class="messaging">
+        <div class="inbox_msg">
+          <div class="inbox_people">
+            <div class="headind_srch">
+              <div class="recent_heading">
+                <h4>Dostępne konwersacje</h4>
+              </div>
+              <div class="srch_bar">
+                <div class="stylish-input-group">
+                  <button (click)="onCreateGroup()" class="btn btn-sm btn-primary">Utwórz konwersację</button></div>
+              </div>
+            </div>
+            <div class="inbox_chat">
+              <div 
+              (click)="onSelectedGroup(group)" 
+              [ngClass]="{'active_chat': group.id == selectedGroupId }" 
+              class="chat_list" 
+              *ngFor="let group of groups">
+                <div class="chat_people">
+                  <div class="chat_img"> <img src="data:image/png;base64,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" alt="sunil"> </div>
+                  <div class="chat_ib">
+                    <h5>{{ group.id }}</h5>
+                    <p>Za pomocą powyższego ciągu znaków możesz komunikować się ze znajomymi.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <form (ngSubmit)="onJoinToGroup(joinToGroupForm)" #joinToGroupForm="ngForm">
+              <div class="form-group">
+                <input 
+                required 
+                name="groupId" 
+                class="form-control" 
+                ngModel
+                placeholder = "Wpisz id konwersacji, aby dołączyć do już istniejącej"
+                #groupId = "ngModel">
+                <span *ngIf="!groupId.valid && groupId.touched" class="d-block text-danger mt-1 ml-1">Proszę podać identyfikator grupy.</span>
+                <span *ngIf="error" class="d-block text-danger mt-1 ml-1">{{ error }}</span>
+                <button 
+                type="submit"
+                [disabled]="!joinToGroupForm.valid" 
+                class="btn btn-sm btn-primary float-right m-2">Dołącz</button>
+              </div>
+            </form>
+          </div>
+          <div class="mesgs">
+            <div class="msg_history" #scrollMe>
+              <ng-container  *ngFor="let message of incommingMessages" >
+                <div *ngIf="message.groupId == selectedGroupId" [ngClass]="{
+                  'outgoing_msg': message.isMyMessage,
+                  'incoming_msg': !message.isMyMessage}">
+                  <div [ngClass]="{
+                    'sent_msg': message.isMyMessage,
+                    'received_msg': !message.isMyMessage}">
+                    <div [ngClass]="{
+                      'received_withd_msg': !message.isMyMessage}">
+                      <p>{{ message.body }}</p>
+                      <span class="time_date"> {{ message.dateOfDispatch | date:'shortTime' }} | {{ message.dateOfDispatch | timeAgo }} </span>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            
+            <div class="type_msg">
+              <div class="input_msg_write">
+                <input [disabled]="!selectedGroupId" type="text" class="write_msg" placeholder="Wpisz treść wiadomości" [(ngModel)]="messageValue" #messageBody (keyup.enter)="onSendMessage(messageBody.value)" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center top_spac"> Oprawa graficzna bazuje na motywie zaprojektowanym przez <a target="_blank" href="#">Sunil Rajput</a></p>
+      </div>
+    </div>
